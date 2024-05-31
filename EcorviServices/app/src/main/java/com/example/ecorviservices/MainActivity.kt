@@ -1,6 +1,8 @@
 package com.example.ecorviservices
 
 import android.os.Bundle
+import android.content.Intent
+import android.net.Uri
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -27,9 +29,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
 
         binding.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
+            val emailIntent = Intent(Intent.ACTION_SENDTO)
+            emailIntent.setData(Uri.parse("mailto:info@ecorvi.com")) // replace with your email address
+            startActivity(emailIntent)
         }
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
